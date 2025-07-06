@@ -1,0 +1,22 @@
+CREATE TABLE bills (
+    id CHAR(36) NOT NULL PRIMARY KEY,
+    user_id CHAR(36) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    subcategory VARCHAR(255),
+    amount VARCHAR(255) NOT NULL,
+    payment_terms INTEGER,
+    recurring BOOLEAN DEFAULT FALSE,
+    recurring_frequency VARCHAR(50),
+    installment_amount DOUBLE,
+    installment_plan VARCHAR(255),
+    installment_interest DOUBLE,
+    transaction_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    INDEX idx_bills_user_id (user_id),
+    INDEX idx_bills_category (category),
+    INDEX idx_bills_recurring (recurring),
+    INDEX idx_bills_transaction_date (transaction_date)
+);
