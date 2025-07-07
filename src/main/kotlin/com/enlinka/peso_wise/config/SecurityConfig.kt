@@ -99,9 +99,14 @@ class SecurityConfig(
 
     @Bean
     fun userDetailsService(): UserDetailsService {
-        // This will be implemented later with proper user details loading
+        // Basic implementation for now - will be enhanced later
         return UserDetailsService { username ->
-            throw RuntimeException("UserDetailsService implementation needed")
+            // For now, return a simple user for testing
+            org.springframework.security.core.userdetails.User.builder()
+                .username(username)
+                .password("{noop}password") // No encoding for now
+                .authorities("USER")
+                .build()
         }
     }
 }
