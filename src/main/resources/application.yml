@@ -23,8 +23,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${MAIL_USERNAME:your-email@gmail.com}
-    password: ${MAIL_PASSWORD:your-app-password}
+    username: ejdomingo.dev@gmail.com
+    password: yglqeltpdtkqggpb
     properties:
       mail:
         smtp:
@@ -48,11 +48,11 @@ logging:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:mySecretKey123456789012345678901234567890}
+    secret: 3a91c34db160d538151a5655e16f45f2
     expiration: 15552000 # 6 months in seconds
   
   encryption:
-    secret: ${ENCRYPTION_SECRET:myEncryptionSecret12345678901234567890}
+    secret: 7ebe3b7f23e441ec5e68cff0f4ee92bb
     
   cors:
     allowed-origins: 
@@ -66,47 +66,3 @@ app:
       - OPTIONS
     allowed-headers: "*"
     allow-credentials: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-  
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
-  
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: prod
-  
-  datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:mydatabase}
-    username: ${DB_USERNAME:myuser}
-    password: ${DB_PASSWORD:secret}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: false
-
-logging:
-  level:
-    com.enlinka.peso_wise: INFO
-    root: WARN

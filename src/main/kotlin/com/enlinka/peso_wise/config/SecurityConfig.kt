@@ -53,7 +53,7 @@ class SecurityConfig(
         val configuration = CorsConfiguration().apply {
             allowedOriginPatterns = allowedOrigins
             allowedMethods = this@SecurityConfig.allowedMethods
-            allowedHeaders = listOf(allowedHeaders)
+            allowedHeaders = listOf("*")
             allowCredentials = this@SecurityConfig.allowCredentials
             maxAge = 3600L
         }

@@ -18,8 +18,8 @@ class EncryptionConfig {
         return Encryptors.text(encryptionSecret, KeyGenerators.string().generateKey())
     }
 
-    @Bean
-    fun queryableTextEncryptor(): TextEncryptor {
-        return Encryptors.queryableText(encryptionSecret, KeyGenerators.string().generateKey())
-    }
+//    @Bean
+//    fun queryableTextEncryptor(): TextEncryptor {
+//        return Encryptors.queryableText(encryptionSecret, KeyGenerators.string().generateKey())
+//    }
 }
